@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="shortcut icon" href="/favicon.png" type="image/x-icon" />
+  <title><%= htmlWebpackPlugin.options.title %></title>
+</head>
+<body>
+<div id="container">
+  <div class="entrance">
+    <img class="logo" src="./logo.png" width="100" height="100" alt="Picture from recordscreen.io">
+    <input class="number" type="text" placeholder="留空或输入ID">
+    <input class="submit" type="button" value="创建">
+  </div>
+  <div class="view hide">
+    <!-- <video autoplay playsinline poster="./1.webp"></video> -->
+    <video autoplay playsinline></video>
+    <div class="play-overlay"></div>
+    <div class="play-bezel">
+      <button class="play-btn">
+        <svg viewBox="0 0 24 24" width=48 height=48>
+          <path fill="#444" d="M8.036 19.701C6.933 20.4 6 19.835 6 18.415V5.595c0-1.45.912-1.996 2.036-1.285l10.129 6.409c1.103.698 1.124 1.863 0 2.574L8.036 19.7z">
+          </path>
+        </svg>
+      </button>
+      <button class="pause-btn">
+        <svg viewBox="0 0 24 24" width=48 height=48>
+          <path fill="#444" d="M9 5c1 0 1 1 1 1v12c0 1-1 1-1 1H7c-1 0-1-1-1-1V6c0-1 1-1 1-1h2zm8 0c1 0 1 1 1 1v12c0 1-1 1-1 1h-2c-1 0-1-1-1-1V6c0-1 1-1 1-1h2z">
+          </path>
+        </svg>
+      </button>
+      <button class="invalid-btn">
+        <svg viewBox="0 0 24 24" width=48 height=48>
+          <path fill="#444" d="M19.353 16.044L3.262 6.019a.522.522 0 01-.167-.717l.084-.134a.522.522 0 01.717-.167l16.091 10.024a.522.522 0 01.167.717l-.084.134a.522.522 0 01-.717.168zM18.407 13.105c.86-.715.771-1.745-.242-2.386L8.036 4.31c-1.066-.674-1.93-.208-2.019 1.076l12.39 7.719zM6 8.66v9.755c0 1.419.933 1.984 2.036 1.286l7.783-4.924L6 8.66z">
+          </path>
+        </svg>
+      </button>
+    </div>
+    <div class="play-bar">
+      <button class="mini-play-btn">
+        <svg viewBox="0 0 24 24"><path d="M8.036 19.701C6.933 20.4 6 19.835 6 18.415V5.595c0-1.45.912-1.996 2.036-1.285l10.129 6.409c1.103.698 1.124 1.863 0 2.574L8.036 19.7z"></path></svg>
+      </button>
+      <button class="mini-pause-btn">
+        <svg viewBox="0 0 24 24"><path d="M9 5c1 0 1 1 1 1v12c0 1-1 1-1 1H7c-1 0-1-1-1-1V6c0-1 1-1 1-1h2zm8 0c1 0 1 1 1 1v12c0 1-1 1-1 1h-2c-1 0-1-1-1-1V6c0-1 1-1 1-1h2z"/></svg>
+      </button>
+      <button class="mini-volume-btn">
+        <svg viewBox="0 0 24 24"><path d="M5 12.012v2.512h3.331a.99.99 0 01.178.006c.216.022.41.112.56.248L13 17.429V6.595l-3.93 2.65a.992.992 0 01-.561.25.99.99 0 01-.178.005H5v2.512zm-2 0v-3.51A1 1 0 014 7.5h4.081l5.273-3.556a.986.986 0 01.599-.17H14c.552 0 1 .445 1 .999v14.479a.998.998 0 01-1.047.997.986.986 0 01-.6-.169l-5.272-3.556H4a1 1 0 01-1-1.002v-3.51zm14.506 3.768l-.006-.007a4.991 4.991 0 001.93-3.947 4.991 4.991 0 00-1.93-3.947l.007-.009a1 1 0 111.215-1.562l.006-.008a6.988 6.988 0 012.702 5.526 6.988 6.988 0 01-2.702 5.525l-.007-.008a1 1 0 11-1.215-1.562z"/></svg>
+      </button>
+      <button class="mini-mute-btn">
+        <svg viewBox="0 0 24 24"><path d="M7.38 9.5H5v5.024h3.331a.99.99 0 01.178.006c.216.022.41.112.56.248L13 17.429V15.12L7.38 9.5zM15 17.12v2.131a.998.998 0 01-1.047.998.986.986 0 01-.6-.169l-5.272-3.556H4a1 1 0 01-1-1.002v-7.02A1 1 0 014 7.5h1.38L3.384 5.504a.999.999 0 01-.002-1.416.995.995 0 011.416.002l14.139 14.138a.999.999 0 01.001 1.416.995.995 0 01-1.416-.002L15 17.12zm-4.208-9.036l-1.44-1.44 4.002-2.7a.986.986 0 01.599-.17H14c.552 0 1 .445 1 .999v7.519l-2-2V6.595l-2.208 1.489zm7.225 7.225a4.984 4.984 0 001.413-3.483 4.991 4.991 0 00-1.93-3.947l.007-.009a1 1 0 111.215-1.562l.006-.008a6.988 6.988 0 012.702 5.526 6.977 6.977 0 01-1.998 4.897l-1.415-1.414z"/></svg>
+      </button>
+      <div class="mini-volume-bar"></div>
+      <button class="mini-fullscreen-btn">
+        <svg viewBox="0 0 24 24"><path d="M20 10V5a1 1 0 00-.99-1H14v2h4v4h2zm-.288 9.707a.984.984 0 00.288-.698V14h-2v4h-4v2h5.01c.268 0 .514-.11.694-.29l.008-.003zM6 18v-4H4v5.01c0 .271.11.518.288.697.188.182.434.293.703.293H10v-2H6zM4.288 4.293A.984.984 0 004 4.991V10h2V6h4V4H4.99a.985.985 0 00-.694.29l-.008.003z"/></svg>
+      </button>
+      <button class="mini-fullscreen-exit-btn">
+        <svg viewBox="0 0 24 24"><path d="M14.288 14.293a.984.984 0 00-.288.698V20h2v-4h4v-2h-5.01a.985.985 0 00-.694.29l-.008.003zM16 8V4h-2v5.01c0 .271.11.518.288.697.188.182.434.293.703.293H20V8h-4zm-8 8v4h2v-5.01a.984.984 0 00-.288-.697A1.005 1.005 0 009.009 14H4v2h4zm1.712-6.293A.984.984 0 0010 9.009V4H8v4H4v2h5.01c.268 0 .514-.11.694-.29l.008-.003z"/></svg>
+      </button>
+    </div>
+  </div>
+</div>
+</body>
+</html>
